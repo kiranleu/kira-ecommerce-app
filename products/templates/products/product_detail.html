@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Product Details</h1>
+ <img src="{{MEDIA_URL}}{{products.image}}" alt="">
+<h1>{{products.name}}</h1>
+<p>{{products.brand}}</p>
+<p>{{products.description}}</p>
+{{products.price}}
+{{products.stock}}
+{{products.sku}}
+{% endblock %}
