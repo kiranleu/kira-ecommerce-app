@@ -9,12 +9,14 @@
                             <img src="{{MEDIA_URL}}{{product.image}}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">€{{product.price}}</h4>
-                                <h4><a href="{% url 'product_details' product.id %}">{{product.name}}</a>
+                                <h4><a href="{% url 'product_detail' product.id %}">{{product.name}}</a>
                                 </h4>
                                 <p>{{product.brand}}</p>
                                 
-                                <form method="POST" action="#">
+                                <form method="POST" action="{% url 'add_to_cart' %}">
+                                     {% csrf_token %}
                                     <input type="number" name="quantity" value="1"/>
+                                    <input type="hidden" name="product" value="{{product.id}}"/>
                                     <input class="btn btn-primary" type="submit" value="Add to cart"/>
                                 </form>
                                 

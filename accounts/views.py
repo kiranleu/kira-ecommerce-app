@@ -28,3 +28,5 @@ def signup(request):
 
 def show_profile(request):
     return render(request,'profile.html')
+    
+

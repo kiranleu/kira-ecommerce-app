@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views import signup, show_profile
+from cart.views import add_to_cart,view_cart,remove_from_cart
 from products.views import product_list,product_details
+from checkout.views import checkout, submit_payment
+from reviews.views import write_review
 from django.views.static import serve
 from django.conf import settings
 
@@ -27,7 +30,14 @@ urlpatterns = [
     path('accounts/profile',show_profile, name="profile"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', signup, name='signup'),
-    path('product_detail/<int:id>', product_details, name='product_details'),
+    path('product_detail/<int:id>', product_details, name='product_detail'),
+    path('cart/add/', add_to_cart,name='add_to_cart'),
+    path('cart/view_cart/', view_cart,name='view_cart'),
+    path('cart/remove/', remove_from_cart, name='remove_from_cart'),
+    path('checkout/',checkout, name='checkout'),
+    path('reviews/add/<int:id>', write_review, name='write_review'),
+    path('checkout/pay',submit_payment, name='submit_payment'),
     path('media/<path:path>', serve, {'document_root':settings.MEDIA_ROOT}),
+    
     
 ]
